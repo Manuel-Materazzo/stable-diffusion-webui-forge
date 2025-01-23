@@ -73,11 +73,15 @@ fi
 # this script cannot be run as root by default
 can_run_as_root=0
 
+# Add install only flag
+install_only=0
+
 # read any command line flags to the webui.sh script
-while getopts "f" flag > /dev/null 2>&1
+while getopts "fi" flag > /dev/null 2>&1
 do
     case ${flag} in
         f) can_run_as_root=1;;
+        i) install_only=1;;
         *) break;;
     esac
 done
@@ -280,6 +284,14 @@ prepare_tcmalloc() {
         fi
     fi
 }
+
+# Exit if install_only flag is set
+if [[ $install_only -eq 1 ]]; then
+    printf "\n%s\n" "${delimiter}"
+    printf "Installation complete. Exiting..."
+    printf "\n%s\n" "${delimiter}"
+    exit 0
+fi
 
 KEEP_GOING=1
 export SD_WEBUI_RESTART=tmp/restart
