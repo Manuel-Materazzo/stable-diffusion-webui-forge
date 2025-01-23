@@ -1,8 +1,9 @@
 name: Deploy API Image to GHCR
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - '*'
   workflow_dispatch:
 
 jobs:
