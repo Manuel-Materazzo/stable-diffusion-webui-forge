@@ -25,6 +25,6 @@ jobs:
 
       - name: 'Build Image'
         run: |
-          docker build . --tag ghcr.io/manuel-materazzo/sd-forge:latest --tag ghcr.io/manuel-materazzo/sd-forge:${{github.action_ref}}
+          docker build . --tag ghcr.io/manuel-materazzo/sd-forge:latest --tag ghcr.io/manuel-materazzo/sd-forge:${{github.ref_name}}
           docker push ghcr.io/manuel-materazzo/sd-forge:latest
-          docker push ghcr.io/manuel-materazzo/sd-forge:${{github.action_ref}}
+          docker push ghcr.io/manuel-materazzo/sd-forge:${{github.ref_name}}
